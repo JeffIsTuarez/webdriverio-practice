@@ -30,6 +30,11 @@ class InventoryPage extends Page {
         await expect(this.inventoryItems).toBeDisplayed();
     }
 
+    async verifyProblemPage(){
+        await this.inventoryItems.forEach(element => {
+            expect(element).toHaveAttribute('src', '/static/media/sl-404.168b1cce.jpg');
+        });
+    }
 }
 
 export default new InventoryPage();
