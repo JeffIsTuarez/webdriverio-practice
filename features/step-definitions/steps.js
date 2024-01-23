@@ -20,3 +20,6 @@ When(/^I login with (\w+) and (.+)$/, async (username, password) => {
 Then(/^I should be on the (\w+) page$/, async(page) => {
     await pages[page].verifyPage();
 });
+Then('I should recieve an error', async () => {
+    await LoginPage.verifyErrorOccured();
+})

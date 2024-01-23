@@ -20,6 +20,10 @@ class LoginPage extends Page {
         return $('input#login-button');
     }
 
+    get errorModal () {
+        return $('div.error')
+    }
+
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
@@ -41,6 +45,11 @@ class LoginPage extends Page {
         await expect(this.inputUsername).toBeDisplayed();
         await expect(this.inputPassword).toBeDisplayed();
         await expect(this.btnSubmit).toBeDisplayed();
+    }
+
+    async verifyErrorOccured(){
+        await expect(this.errorModal).toBeDisplayed();
+        await expect(this.errorModal).toHaveText('Epic sadface: Sorry, this user has been locked out.');
     }
 
     
