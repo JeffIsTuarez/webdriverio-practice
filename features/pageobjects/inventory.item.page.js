@@ -43,7 +43,6 @@ class InventoryItemPage extends Page {
         await expect(this.inventoryImage).toBeDisplayed();
         await expect(this.backButton).toBeDisplayed();
     }
-
 }
 
 export default new InventoryItemPage();
