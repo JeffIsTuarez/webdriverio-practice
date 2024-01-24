@@ -23,6 +23,11 @@ class InventoryPage extends Page {
         return super.open('inventory');
     }
 
+    get inventoryAddRemoveCart() {
+        // returns all add/remove carts
+        return $$('div.inventory_item button');
+    }
+
     async verifyPage(){
         await expect(this.header).toBeDisplayed();
         await expect(this.shoppingCart).toBeDisplayed();
@@ -35,6 +40,18 @@ class InventoryPage extends Page {
             expect(element).toHaveAttribute('src', '/static/media/sl-404.168b1cce.jpg');
         });
     }
+
+    async orderOneInventoryToCart(){
+        // clicking it again reverts it back
+        await this.inventoryAddRemoveCart[0].click();
+    }
+
+    async orderAllInventoriesToCart(){
+        await this.inventoryAddRemoveCart.forEach(element => {
+            element.click();
+        });
+    }
+
 }
 
 export default new InventoryPage();
